@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ page.title | default: site.title }}</title>
+    <meta name="description" content="{{ site.description }}" />
+    <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}" />
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+            <p class="site-subtitle">{{ site.description }}</p>
+        </div>
+    </header>
+
+    <div class="site-body container">
+        <aside class="site-nav" role="navigation">
+            <nav>
+                <ul>
+                    <li><a href="{{ '/Home/' | relative_url }}">Home</a></li>
+                    <li><a href="{{ '/1.-Introduction/' | relative_url }}">Introduction</a></li>
+                    <li><a href="{{ '/2.-Core-Coding-Principles/' | relative_url }}">Core Coding Principles</a></li>
+                    <li><a href="{{ '/3.-Code-Style-and-Formatting/' | relative_url }}">Code Style</a></li>
+                    <li><a href="{{ '/4.-Variable-Naming-Conventions/' | relative_url }}">Variable Naming</a></li>
+                    <li><a href="{{ '/5.-Functions-and-Methods/' | relative_url }}">Functions</a></li>
+                    <li><a href="{{ '/6.-Control-Structures/' | relative_url }}">Control Structures</a></li>
+                    <li><a href="{{ '/7.-Object-Oriented-Design/' | relative_url }}">Object-Oriented Design</a></li>
+                    <li><a href="{{ '/8.-Error-Handling-and-Logging/' | relative_url }}">Error Handling</a></li>
+                    <li><a href="{{ '/9.-Security-Best-Practices/' | relative_url }}">Security</a></li>
+                    <li><a href="{{ '/10.-Performance-and-Optimization/' | relative_url }}">Performance</a></li>
+                    <li><a
+                            href="{{ '/11.-Infrastructure-Docker-Media-Servers-and-Virtual-Machines/' | relative_url }}">Infrastructure</a>
+                    </li>
+                    <li><a href="{{ '/12.-Documentation-Practices/' | relative_url }}">Documentation</a></li>
+                    <li><a href="{{ '/13.-API-Documentation-Guide-and-Best-Practices/' | relative_url }}">API Docs</a>
+                    </li>
+                    <li><a href="{{ '/14.-Code-Review-Guidelines/' | relative_url }}">Code Review</a></li>
+                    <li><a href="{{ '/15.-Appendix-and-References/' | relative_url }}">Appendix</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="site-content" role="main">
+            {{ content }}
+            <footer class="site-footer">
+                <p>© {{ site.title }} • Maintained by CAIR-MUN</p>
+            </footer>
+        </main>
+    </div>
+
+</body>
+
+</html>

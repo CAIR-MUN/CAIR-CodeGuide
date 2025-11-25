@@ -2,9 +2,11 @@ title: CAIR Code Guide
 description: Coding standards and best practices for CAIR projects
 baseurl: ""
 url: ""
-theme: minima
 markdown: kramdown
 permalink: /:path/
+
+# Use a custom layout; no built-in theme required
+theme: minima
 
 # Show future posts (not used here)
 future: false
@@ -13,3 +15,8 @@ future: false
 exclude:
   - README.md
   - .github
+
+# Syntax highlighting and markdown
+highlighter: rouge
+kramdown:
+  input: GFM

@@ -42,6 +42,44 @@ jobs:
                   # Replace .md links with link to page path (GitHub Pages serves by path)
                   find docs -name '*.md' -print0 | xargs -0 sed -i 's/\]([^)]*)\.md\)/]([^)]*)/g' || true
 
+              - name: Add Jekyll front matter to docs pages
+              run: |
+                set -e
+                # Remove .nojekyll if present to ensure Jekyll builds
+                rm -f docs/.nojekyll || true
+
+                python3 - <<'PY'
+          import os, re
+          from pathlib import Path
+
+          def slugify(name):
+            s = re.sub(r"\s+", '-', name)
+            s = re.sub(r'[^A-Za-z0-9\-_.]', '', s)
+            return s.strip('-').lower()
+
+          for md in Path('docs').rglob('*.md'):
+            # skip files that already have front matter
+            try:
+              text = md.read_text(encoding='utf-8')
+            except Exception:
+              continue
+            if text.lstrip().startswith('---'):
+              continue
+            # extract a title from first heading or filename
+            title = None
+            for line in text.splitlines():
+              m = re.match(r'^#\s+(.*)', line)
+              if m:
+                title = m.group(1).strip()
+                break
+            if not title:
+              title = md.stem.replace('-', ' ').replace('_',' ').strip()
+            slug = slugify(md.stem)
+            fm = f"---\nlayout: default\ntitle: \"{title}\"\npermalink: /{slug}/\n---\n\n"
+            md.write_text(fm + text, encoding='utf-8')
+          print('Prepended front matter to docs pages where missing')
+          PY
+
             - name: Commit and push docs/ updates
               run: |
                   set -e
