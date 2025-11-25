@@ -1,0 +1,15 @@
+title: CAIR Code Guide
+description: Coding standards and best practices for CAIR projects
+baseurl: ""
+url: ""
+theme: minima
+markdown: kramdown
+permalink: /:path/
+
+# Show future posts (not used here)
+future: false
+
+# Exclude files that shouldn't be published
+exclude:
+  - README.md
+  - .github
