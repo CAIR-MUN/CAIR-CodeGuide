@@ -1,6 +1,6 @@
 title: CAIR Code Guide
 description: Coding standards and best practices for CAIR projects
-baseurl: ""
+baseurl: "/CAIR-CodeGuide"
 url: ""
 markdown: kramdown
 permalink: /:path/
